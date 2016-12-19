@@ -13,12 +13,19 @@ public class playerController : MonoBehaviour {
     private float directionDampTime = 0.05f;
     [SerializeField]
     private float directionSpeed = 3.0f;
+    [SerializeField]
+    private float rotationDegreePerSecond = 120.0f;
     
     //private globals
     private float direction = 0.0f;
     private float speed = 0.0f;
     private float h = 0.0f;
     private float v = 0.0f;
+    private AnimatorStateInfo stateInfo;
+
+
+    //hashes
+    private int m_locomotionId = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +38,7 @@ public class playerController : MonoBehaviour {
         //update the cameras position
         //moveCam();
 
+        m_locomotionId = Animator.StringToHash("Base Layer.Motion");
         //Get Animator Controller
         animator = GetComponent<Animator>();
 
@@ -43,6 +51,8 @@ public class playerController : MonoBehaviour {
     {
         if (animator)
         {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
             //pull values from keyboard/controller
             h = CrossPlatformInputManager.GetAxis("Horizontal");
             v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -74,10 +84,12 @@ public class playerController : MonoBehaviour {
         //moveCam();
         //-------------------Before animator -----------------------------------------------------------------
 
-        //if(isInLocomotion() && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0)))
-        //{
-
-        //}
+        if(isInLocomotion() && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0)))
+        {
+            Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (h < 0f ? -1f : 1f), 0f), Mathf.Abs(h));
+            Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+            this.transform.rotation = (this.transform.rotation * deltaRotation);
+        }
     }
 
     //public void moveCam()
@@ -119,5 +131,9 @@ public class playerController : MonoBehaviour {
 
         directionOut = angleRootToMove * directionSpeed;
 
+    }
+
+    public bool isInLocomotion(){
+        return stateInfo.nameHash == m_locomotionId;
     }
 }
