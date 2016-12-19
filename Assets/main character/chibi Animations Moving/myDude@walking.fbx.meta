@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1664307d11c5d1849adf76a24b99c5b9
-timeCreated: 1480938392
+guid: 9365caafd8fc2f042a52460b84b23099
+timeCreated: 1482107858
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -57,7 +57,7 @@ ModelImporter:
     400046: mixamorig:Spine1
     400048: mixamorig:Spine2
     400050: //RootNode
-    7400000: walking
+    7400000: walking2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -81,7 +81,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: walking
+      name: walking2
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 62
@@ -92,7 +92,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

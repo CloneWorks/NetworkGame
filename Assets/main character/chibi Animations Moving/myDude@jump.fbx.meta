@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 60f363a31b5e73a4a84ee5360fcb2ae7
-timeCreated: 1480938380
+guid: 1a56ddeeaad564e4eb6d9c46e2513a67
+timeCreated: 1482107857
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -57,7 +57,7 @@ ModelImporter:
     400046: mixamorig:Spine1
     400048: mixamorig:Spine2
     400050: //RootNode
-    7400000: jump
+    7400000: jump2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -81,7 +81,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: jump
+      name: jump2
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 130

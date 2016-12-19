@@ -1,63 +1,63 @@
 fileFormatVersion: 2
-guid: cf2bc3bb2754a60418317a9c17e372ce
-timeCreated: 1480938386
+guid: a672651cad364ee4b971faf206409025
+timeCreated: 1482107858
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: mixamorig:Head
-    100004: mixamorig:HeadTop_End
-    100006: mixamorig:Hips
-    100008: mixamorig:LeftArm
-    100010: mixamorig:LeftFoot
-    100012: mixamorig:LeftForeArm
-    100014: mixamorig:LeftHand
-    100016: mixamorig:LeftLeg
-    100018: mixamorig:LeftShoulder
-    100020: mixamorig:LeftToe_End
-    100022: mixamorig:LeftToeBase
-    100024: mixamorig:LeftUpLeg
-    100026: mixamorig:Neck
-    100028: mixamorig:RightArm
-    100030: mixamorig:RightFoot
-    100032: mixamorig:RightForeArm
-    100034: mixamorig:RightHand
-    100036: mixamorig:RightLeg
-    100038: mixamorig:RightShoulder
-    100040: mixamorig:RightToe_End
-    100042: mixamorig:RightToeBase
-    100044: mixamorig:RightUpLeg
-    100046: mixamorig:Spine
-    100048: mixamorig:Spine1
-    100050: mixamorig:Spine2
-    400000: //RootNode
-    400002: mixamorig:Head
-    400004: mixamorig:HeadTop_End
-    400006: mixamorig:Hips
-    400008: mixamorig:LeftArm
-    400010: mixamorig:LeftFoot
-    400012: mixamorig:LeftForeArm
-    400014: mixamorig:LeftHand
-    400016: mixamorig:LeftLeg
-    400018: mixamorig:LeftShoulder
-    400020: mixamorig:LeftToe_End
-    400022: mixamorig:LeftToeBase
-    400024: mixamorig:LeftUpLeg
-    400026: mixamorig:Neck
-    400028: mixamorig:RightArm
-    400030: mixamorig:RightFoot
-    400032: mixamorig:RightForeArm
-    400034: mixamorig:RightHand
-    400036: mixamorig:RightLeg
-    400038: mixamorig:RightShoulder
-    400040: mixamorig:RightToe_End
-    400042: mixamorig:RightToeBase
-    400044: mixamorig:RightUpLeg
-    400046: mixamorig:Spine
-    400048: mixamorig:Spine1
-    400050: mixamorig:Spine2
-    7400000: standard_run
+    100000: mixamorig:Head
+    100002: mixamorig:HeadTop_End
+    100004: mixamorig:Hips
+    100006: mixamorig:LeftArm
+    100008: mixamorig:LeftFoot
+    100010: mixamorig:LeftForeArm
+    100012: mixamorig:LeftHand
+    100014: mixamorig:LeftLeg
+    100016: mixamorig:LeftShoulder
+    100018: mixamorig:LeftToe_End
+    100020: mixamorig:LeftToeBase
+    100022: mixamorig:LeftUpLeg
+    100024: mixamorig:Neck
+    100026: mixamorig:RightArm
+    100028: mixamorig:RightFoot
+    100030: mixamorig:RightForeArm
+    100032: mixamorig:RightHand
+    100034: mixamorig:RightLeg
+    100036: mixamorig:RightShoulder
+    100038: mixamorig:RightToe_End
+    100040: mixamorig:RightToeBase
+    100042: mixamorig:RightUpLeg
+    100044: mixamorig:Spine
+    100046: mixamorig:Spine1
+    100048: mixamorig:Spine2
+    100050: //RootNode
+    400000: mixamorig:Head
+    400002: mixamorig:HeadTop_End
+    400004: mixamorig:Hips
+    400006: mixamorig:LeftArm
+    400008: mixamorig:LeftFoot
+    400010: mixamorig:LeftForeArm
+    400012: mixamorig:LeftHand
+    400014: mixamorig:LeftLeg
+    400016: mixamorig:LeftShoulder
+    400018: mixamorig:LeftToe_End
+    400020: mixamorig:LeftToeBase
+    400022: mixamorig:LeftUpLeg
+    400024: mixamorig:Neck
+    400026: mixamorig:RightArm
+    400028: mixamorig:RightFoot
+    400030: mixamorig:RightForeArm
+    400032: mixamorig:RightHand
+    400034: mixamorig:RightLeg
+    400036: mixamorig:RightShoulder
+    400038: mixamorig:RightToe_End
+    400040: mixamorig:RightToeBase
+    400042: mixamorig:RightUpLeg
+    400044: mixamorig:Spine
+    400046: mixamorig:Spine1
+    400048: mixamorig:Spine2
+    400050: //RootNode
+    7400000: right_strafe_walking2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -81,10 +81,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: standard_run
+      name: right_strafe_walking2
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 62
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -92,7 +92,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
