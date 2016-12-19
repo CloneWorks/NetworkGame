@@ -6,25 +6,17 @@ public class playerController : MonoBehaviour {
     //===================================
     //Variables
     //===================================
-
-    //old vars before animator
-    float speed = 0.1f;
-    float rotationSpeed = 2.0f;
-
-    //Transform mainCamera;
-    //Vector3 offset;
-    //public float cameraDistance = 1.0f;
-    //public float cameraHeight = 4.0f;
-    //public float cameraRotation = 5.0f;
-    // before animator-->
-
-    //new vars for animator
+    //inspector variables
     [SerializeField]
     private Animator animator;
     [SerializeField]
     private float directionDampTime = 0.05f;
-
-    private float speed2 = 0.0f;
+    [SerializeField]
+    private float directionSpeed = 3.0f;
+    
+    //private globals
+    private float direction = 0.0f;
+    private float speed = 0.0f;
     private float h = 0.0f;
     private float v = 0.0f;
 
@@ -46,7 +38,25 @@ public class playerController : MonoBehaviour {
             animator.SetLayerWeight(1,1);
         }
 	}
-	
+
+    void Update()
+    {
+        if (animator)
+        {
+            //pull values from keyboard/controller
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            v = CrossPlatformInputManager.GetAxis("Vertical");
+
+            //speed = new Vector2(h, v).sqrMagnitude;
+
+            stickToWorldSpace(this.transform, Camera.main.transform, ref direction, ref speed);
+
+            animator.SetFloat("speed", speed);
+            animator.SetFloat("direction", direction, directionDampTime, Time.deltaTime); //animator.SetFloat("direction", h, directionDampTime, Time.deltaTime);
+
+        }
+    }
+
 	// Update is called once per frame
 	void FixedUpdate () {
 
@@ -64,20 +74,10 @@ public class playerController : MonoBehaviour {
         //moveCam();
         //-------------------Before animator -----------------------------------------------------------------
 
-        if(animator){
-            //pull values from keyboard/controller
-            h = CrossPlatformInputManager.GetAxis("Horizontal");
-            v = CrossPlatformInputManager.GetAxis("Vertical");
+        //if(isInLocomotion() && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0)))
+        //{
 
-            speed2 = new Vector2(h, v).sqrMagnitude;
-
-            animator.SetFloat("speed", speed2);
-            animator.SetFloat("direction", h, directionDampTime, Time.deltaTime);
-
-            transform.Translate(0, 0, v * speed);
-            transform.Rotate(0, h * rotationSpeed, 0);
-        }
-
+        //}
     }
 
     //public void moveCam()
@@ -88,4 +88,36 @@ public class playerController : MonoBehaviour {
      //   mainCamera.Translate(offset);
      //   mainCamera.LookAt(transform);
     //}
+
+    public void stickToWorldSpace(Transform root, Transform camera, ref float directionOut, ref float speedOut)
+    {
+        Vector3 rootDirection = root.forward;
+
+        Vector3 stickDirection = new Vector3(h, 0 , v);
+
+        speedOut = stickDirection.sqrMagnitude;
+
+        //get camera rotation
+        Vector3 cameraDirection = camera.forward;
+
+        cameraDirection.y = 0.0f;
+
+        Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, cameraDirection);
+
+        //convert joystick to world space
+        Vector3 moveDirection = referentialShift * stickDirection;
+        Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
+
+        float angleRootToMove = Vector3.Angle(rootDirection, moveDirection) * (axisSign.y >= 0 ? -1f : 1f);
+
+        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), moveDirection, Color.green);
+        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), rootDirection, Color.grey);
+        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), stickDirection, Color.cyan);
+        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), axisSign, Color.yellow);
+
+        angleRootToMove /= 180;
+
+        directionOut = angleRootToMove * directionSpeed;
+
+    }
 }

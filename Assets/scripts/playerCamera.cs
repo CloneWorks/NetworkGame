@@ -14,7 +14,15 @@ public class playerCamera : NetworkBehaviour {
     [SerializeField]
     private Transform follow = null;
     [SerializeField]
+    private Vector3 offset = new Vector3(0f, 1.5f, 0f);
+
     private Vector3 targetPosition = Vector3.zero;
+
+    private Vector3 lookDir;
+
+    private Vector3 velocityCamSmooth = Vector3.zero;
+    [SerializeField]
+    private float camSmoothDampTime = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -40,14 +48,29 @@ public class playerCamera : NetworkBehaviour {
     {
         if(follow != null)
         {
-            targetPosition = follow.position + follow.up * distanceUp - follow.forward * distanceAway;
-            Debug.DrawRay(follow.position, follow.up * distanceUp, Color.red);
-            Debug.DrawRay(follow.position, -1f * follow.forward * distanceAway, Color.blue);
+            Vector3 characterOffset = follow.position + offset;
+
+            lookDir = characterOffset - this.transform.position;
+            lookDir.y = 0;
+            lookDir.Normalize();
+            Debug.DrawRay(this.transform.position, lookDir, Color.white);
+
+            targetPosition = characterOffset + follow.up * distanceUp - lookDir * distanceAway;
+
+            //targetPosition = follow.position + follow.up * distanceUp - follow.forward * distanceAway;
+            //Debug.DrawRay(follow.position, follow.up * distanceUp, Color.red);
+            //Debug.DrawRay(follow.position, -1f * follow.forward * distanceAway, Color.blue);
             Debug.DrawLine(follow.position, targetPosition, Color.magenta);
 
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smooth);
+            //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smooth);
+            smoothPosition(this.transform.position, targetPosition);
 
             transform.LookAt(follow);
         }
+    }
+
+    private void smoothPosition(Vector3 fromPos, Vector3 toPos)
+    {
+        this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmooth, camSmoothDampTime);
     }
 }
