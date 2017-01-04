@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RiverWater
+  m_Shader: {fileID: 4800000, guid: e79d4a80e7338b84a9f5c62faf84933f, type: 3}
+  m_ShaderKeywords: _PARALLAXMAP
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 9c4abc92cf752bb439714f18276ec1e2, type: 3}
+          m_Scale: {x: 50, y: 50}
+          m_Offset: {x: -0.48677236, y: 0.48677236}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 5fa5a48ee8307814bbe3ca45bebec7c9, type: 3}
+          m_Scale: {x: 100, y: 100}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals
+        second:
+          m_Texture: {fileID: 2800000, guid: 628ef09caec2d90478ebb61645d4b079, type: 3}
+          m_Scale: {x: 10, y: 10}
+          m_Offset: {x: -0.1285016, y: 0.1285016}
+      data:
+        first:
+          name: _WaveMap
+        second:
+          m_Texture: {fileID: 2800000, guid: f48359e7ed0c8d5449ba57a2cfc61025, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0.1285016, y: -0.1285016}
+      data:
+        first:
+          name: _RefractTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 10, y: 10}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ReflectTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 3d9d21b60c102034593c63e2a000dc25, type: 3}
+          m_Scale: {x: 10, y: 10}
+          m_Offset: {x: 0.1285016, y: -0.1285016}
+      data:
+        first:
+          name: _Normals2
+        second:
+          m_Texture: {fileID: 2800000, guid: badd775b59d4f304799f0b637e8882dd, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 2.6059935, y: -2.6059935}
+      data:
+        first:
+          name: _ReflectTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: 9c4abc92cf752bb439714f18276ec1e2, type: 3}
+          m_Scale: {x: 10, y: 10}
+          m_Offset: {x: 2.6059935, y: -2.6059935}
+      data:
+        first:
+          name: _Waves
+        second:
+          m_Texture: {fileID: 2800000, guid: d0e5c0889a8e2ae43ae2123eb966c029, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cuastics
+        second:
+          m_Texture: {fileID: 2800000, guid: 9c4abc92cf752bb439714f18276ec1e2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CubeMap
+        second:
+          m_Texture: {fileID: 8900000, guid: 98c330f39d11745ad0004adb8d76c639, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _Shininess
+        second: 1
+      data:
+        first:
+          name: _Parallax
+        second: 0.005
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.5
+      data:
+        first:
+          name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Power
+        second: 0.2
+      data:
+        first:
+          name: _WaveHeight
+        second: 0.08
+      data:
+        first:
+          name: _Fresnel
+        second: 1
+      data:
+        first:
+          name: _Alpha
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: 1, g: 1, b: 1, a: 0.5}
+      data:
+        first:
+          name: _MainCol
+        second: {r: 0.04411763, g: 0.04411763, b: 0.04411763, a: 1}
+      data:
+        first:
+          name: _FresnelColor
+        second: {r: 0.2794118, g: 0.2794118, b: 0.2794118, a: 1}
