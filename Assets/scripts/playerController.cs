@@ -27,6 +27,13 @@ public class playerController : MonoBehaviour {
     //hashes
     private int m_locomotionId = 0;
 
+    //jumping vars
+    public float distToGround = 0;
+    public float jumpForce = 1000;
+
+    public Rigidbody rigid;
+
+
 	// Use this for initialization
 	void Start () {
         //setup camera offset
@@ -45,11 +52,17 @@ public class playerController : MonoBehaviour {
         if(animator.layerCount >= 2){
             animator.SetLayerWeight(1,1);
         }
+
+        // get the distance to ground
+        distToGround = GetComponent<Collider>().bounds.extents.y;
+
+        //get rigid body
+        rigid = GetComponent<Rigidbody>();
 	}
 
     void Update()
     {
-        if (animator)
+        if (animator && IsGrounded())
         {
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
@@ -84,12 +97,54 @@ public class playerController : MonoBehaviour {
         //moveCam();
         //-------------------Before animator -----------------------------------------------------------------
 
-        if(isInLocomotion() && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0)))
+        if(IsGrounded() && isInLocomotion() && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0)))
         {
             Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (h < 0f ? -1f : 1f), 0f), Mathf.Abs(h));
             Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
             this.transform.rotation = (this.transform.rotation * deltaRotation);
         }
+
+        //==================
+        //jumping
+        //==================
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            animator.SetBool("jumping", true);
+
+            rigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        }
+
+
+        
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //landing on the ground
+        if (collision.gameObject.name == "Terrain")
+        {
+            //on the ground
+            if (animator.GetBool("jumping") == true)
+            {
+                animator.SetBool("jumping", false);
+            }
+
+            //on ground after explosion
+            if (animator.GetBool("explode") == true)
+            {
+                animator.SetBool("explode", false);
+            }
+        }
+
+        //hits a mine
+        if(collision.gameObject.tag == "explosive"){
+            animator.SetBool("explode", true);
+        }
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(this.transform.position, -Vector3.up, distToGround + 0.0f);
     }
 
     //public void moveCam()
