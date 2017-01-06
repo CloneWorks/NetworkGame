@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23442388276541400}
   - component: {fileID: 114044427688472288}
   - component: {fileID: 82523169163220180}
+  - component: {fileID: 114468991345818850}
   m_Layer: 0
   m_Name: mine
   m_TagString: explosive
@@ -205,10 +206,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 50
-  power: 20000
+  power: 10000
   audio: {fileID: 0}
   rend: {fileID: 0}
   ps: {fileID: 0}
+--- !u!114 &114468991345818850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560916163487590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142574e6532d5024f812bbb272d1ea4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointB: {x: 10, y: 0, z: 10}
 --- !u!135 &135251436328301578
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -219,7 +232,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.30621913
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198301332790897262
 ParticleSystem:
