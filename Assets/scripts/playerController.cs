@@ -30,9 +30,11 @@ public class playerController : MonoBehaviour {
     //jumping vars
     public float distToGround = 0;
     public float jumpForce = 1000;
+    public float angle = 45;
 
     public Rigidbody rigid;
 
+    public CharacterController charC;
 
 	// Use this for initialization
 	void Start () {
@@ -58,10 +60,19 @@ public class playerController : MonoBehaviour {
 
         //get rigid body
         rigid = GetComponent<Rigidbody>();
+
+        //get char controller
+        charC = GetComponent<CharacterController>();
 	}
 
     void Update()
     {
+        
+    }
+
+	// Update is called once per frame
+	void FixedUpdate () {
+
         if (animator && IsGrounded())
         {
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -78,10 +89,6 @@ public class playerController : MonoBehaviour {
             animator.SetFloat("direction", direction, directionDampTime, Time.deltaTime); //animator.SetFloat("direction", h, directionDampTime, Time.deltaTime);
 
         }
-    }
-
-	// Update is called once per frame
-	void FixedUpdate () {
 
         //-------------------Before animator -----------------------------------------------------------------
 	    //if this is your player object
@@ -111,7 +118,13 @@ public class playerController : MonoBehaviour {
         {
             animator.SetBool("jumping", true);
 
-            rigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            //rigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+           // rigid.AddForce(new Vector3(0, 0, jumpForce), ForceMode.Impulse);
+
+            //Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
+            //rigid.AddForce(dir * jumpForce);
+
+            rigid.AddForce((Vector3.forward * jumpForce) + (Vector3.up * jumpForce), ForceMode.Impulse);
         }
 
 
@@ -159,36 +172,34 @@ public class playerController : MonoBehaviour {
     public void stickToWorldSpace(Transform root, Transform camera, ref float directionOut, ref float speedOut)
     {
         Vector3 rootDirection = root.forward;
+				
+        Vector3 stickDirection = new Vector3(h, 0, v);
+		
+		speedOut = stickDirection.sqrMagnitude;		
 
-        Vector3 stickDirection = new Vector3(h, 0 , v);
+        // Get camera rotation
+        Vector3 CameraDirection = camera.forward;
+        CameraDirection.y = 0.0f; // kill Y
+        Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, Vector3.Normalize(CameraDirection));
 
-        speedOut = stickDirection.sqrMagnitude;
-
-        //get camera rotation
-        Vector3 cameraDirection = camera.forward;
-
-        cameraDirection.y = 0.0f;
-
-        Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, cameraDirection);
-
-        //convert joystick to world space
+        // Convert joystick input in Worldspace coordinates
         Vector3 moveDirection = referentialShift * stickDirection;
-        Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
-
-        float angleRootToMove = Vector3.Angle(rootDirection, moveDirection) * (axisSign.y >= 0 ? -1f : 1f);
-
-        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), moveDirection, Color.green);
-        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), rootDirection, Color.grey);
-        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), stickDirection, Color.cyan);
-        Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), axisSign, Color.yellow);
-
-        angleRootToMove /= 180;
-
-        directionOut = angleRootToMove * directionSpeed;
-
-    }
+		Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
+		
+		Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), moveDirection, Color.green);
+		Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), rootDirection, Color.magenta);
+		Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), stickDirection, Color.blue);
+		Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2.5f, root.position.z), axisSign, Color.red);
+		
+		float angleRootToMove = Vector3.Angle(rootDirection, moveDirection) * (axisSign.y >= 0 ? -1f : 1f);
+		
+		angleRootToMove /= 180f;
+		
+		directionOut = angleRootToMove * directionSpeed;
+	}	
 
     public bool isInLocomotion(){
         return stateInfo.nameHash == m_locomotionId;
     }
+
 }
