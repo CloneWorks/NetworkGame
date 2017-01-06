@@ -7,9 +7,15 @@ public class explodeOnContact : MonoBehaviour {
 	public float radius = 5.0f;
 	public float power = 10.0f;
 
+    public AudioSource audio;
+    public Renderer rend;
+    public ParticleSystem ps;
+
 	// Use this for initialization
 	void Start () {
-
+        audio = GetComponent<AudioSource>();
+        rend = GetComponent<Renderer>();
+        ps = GetComponentInChildren<ParticleSystem>();
 	}
 
 	// Update is called once per frame
@@ -24,12 +30,16 @@ public class explodeOnContact : MonoBehaviour {
 		foreach (Collider hit in colliders) {
 			Rigidbody rb = hit.GetComponent<Rigidbody> ();
 
+            audio.Play();
+            ps.Play();
+
 			if (rb != null) {
 				rb.AddExplosionForce (power, explosionPos, radius, 3.0F);
 			}
 		}
-		
-		Destroy(gameObject);
+
+        //rend.enabled = false;
+		Destroy(gameObject, 1.0f);
 	}
 
 }
