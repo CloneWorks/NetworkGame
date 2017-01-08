@@ -91,6 +91,16 @@ public class playerController : MonoBehaviour {
 
         }
 
+        //turning sharply
+        if (animator.GetFloat("direction") > 2.75 || animator.GetFloat("direction") < -2.75)
+        {
+            animator.SetBool("sharpTurn", true);
+        }
+        else
+        {
+            animator.SetBool("sharpTurn", false);
+        }
+
         //-------------------Before animator -----------------------------------------------------------------
 	    //if this is your player object
         //float translation = CrossPlatformInputManager.GetAxis("Vertical") * speed;
