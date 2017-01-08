@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 11409598}
   - component: {fileID: 11440794}
   - component: {fileID: 11475726}
+  - component: {fileID: 114774041815934084}
   m_Layer: 0
   m_Name: guy
   m_TagString: Untagged
@@ -1276,7 +1277,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.29462337
   m_Height: 1.6713231
   m_Direction: 1
   m_Center: {x: 0, y: 0.83, z: 0}
@@ -1362,3 +1363,19 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196998}
   m_IsPrefabParent: 1
+--- !u!114 &114774041815934084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacc1c3f91a68944d9ff9ec63204fb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useIK: 1
+  leftHand: 0
+  rightHand: 0
+  leftFoot: 0
+  rightFoot: 0
