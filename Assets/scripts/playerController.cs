@@ -29,7 +29,8 @@ public class playerController : MonoBehaviour {
 
     //jumping vars
     public float distToGround = 0;
-    public float jumpForce = 1000;
+    public float jumpForceUp = 100;
+    public float jumpForceForward = 50;
     public float angle = 45;
 
     public Rigidbody rigid;
@@ -114,17 +115,27 @@ public class playerController : MonoBehaviour {
         //==================
         //jumping
         //==================
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && !animator.GetCurrentAnimatorStateInfo(0).IsName("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo(0).IsName("getting_up") && animator.GetBool("jumping") == false)
         {
             animator.SetBool("jumping", true);
+            animator.applyRootMotion = false;
 
             //rigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-           // rigid.AddForce(new Vector3(0, 0, jumpForce), ForceMode.Impulse);
+            //rigid.AddForce(new Vector3(0, 0, jumpForce), ForceMode.Impulse);
 
             //Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
             //rigid.AddForce(dir * jumpForce);
 
-            rigid.AddForce((Vector3.forward * jumpForce) + (Vector3.up * jumpForce), ForceMode.Impulse);
+            if(animator.GetFloat("speed") > 0.5)
+            {
+                Debug.Log(rigid.velocity.sqrMagnitude);
+                rigid.AddForce(((transform.forward * jumpForceForward) + (Vector3.up * jumpForceUp * 1.5f)), ForceMode.Impulse);
+            }
+            else
+            {
+                rigid.AddForce((Vector3.up * (jumpForceUp)), ForceMode.Impulse);
+            }
+            
         }
 
 
@@ -140,18 +151,21 @@ public class playerController : MonoBehaviour {
             if (animator.GetBool("jumping") == true)
             {
                 animator.SetBool("jumping", false);
+                animator.applyRootMotion = true;
             }
 
             //on ground after explosion
             if (animator.GetBool("explode") == true)
             {
                 animator.SetBool("explode", false);
+                animator.applyRootMotion = true;
             }
         }
 
         //hits a mine
         if(collision.gameObject.tag == "explosive"){
             animator.SetBool("explode", true);
+            animator.applyRootMotion = false;
         }
     }
 

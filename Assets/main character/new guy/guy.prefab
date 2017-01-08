@@ -1188,9 +1188,11 @@ MonoBehaviour:
   directionSpeed: 10
   rotationDegreePerSecond: 120
   distToGround: 0
-  jumpForce: 100
+  jumpForceUp: 100
+  jumpForceForward: 10
   angle: 45
   rigid: {fileID: 0}
+  charC: {fileID: 0}
 --- !u!114 &11440794
 MonoBehaviour:
   m_ObjectHideFlags: 1

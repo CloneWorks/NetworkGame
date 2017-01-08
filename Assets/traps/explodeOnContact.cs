@@ -38,8 +38,8 @@ public class explodeOnContact : MonoBehaviour {
 			}
 		}
 
-        //rend.enabled = false;
-		Destroy(gameObject, 1.0f);
+        rend.enabled = false;
+		Destroy(gameObject, 0.8f);
 	}
 
 }
