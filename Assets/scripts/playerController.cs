@@ -37,6 +37,12 @@ public class playerController : MonoBehaviour {
 
     public CharacterController charC;
 
+	public int currentWeapon = 0;
+	public GameObject[] weapons;
+
+
+
+
 	// Use this for initialization
 	void Start () {
         //setup camera offset
@@ -151,6 +157,18 @@ public class playerController : MonoBehaviour {
             }
             
         }
+
+
+		//==================
+		//Shooting
+		//==================
+		if (Input.GetMouseButtonDown (0) && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up")) 
+		{
+			GameObject gun = (GameObject)weapons[1];
+			Debug.Log (gun);
+
+
+		}
 
 
         
