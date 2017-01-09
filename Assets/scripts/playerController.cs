@@ -40,7 +40,12 @@ public class playerController : MonoBehaviour {
 	public int currentWeapon = 0;
 	public GameObject[] weapons;
 
+    public Transform weaponPos;
 
+    public GameObject weapon;
+
+    public Transform leftHandWeaponPos;
+    public Transform rightHandWeaponPos;
 
 
 	// Use this for initialization
@@ -70,6 +75,12 @@ public class playerController : MonoBehaviour {
 
         //get char controller
         charC = GetComponent<CharacterController>();
+
+        //get weapon position
+        weaponPos = transform.FindChild("weaponPos");
+
+        //equipt weapon
+        equiptWeapon();
 	}
 
 	void Update(){
@@ -78,6 +89,7 @@ public class playerController : MonoBehaviour {
 		for (int i = 1; i < 5; i++) {
 			if (Input.GetKeyDown ("" + i)) {
 				currentWeapon = i - 1;
+                equiptWeapon();
 				Debug.Log (currentWeapon);
 			}
 		}
@@ -268,6 +280,9 @@ public class playerController : MonoBehaviour {
 
     public void equiptWeapon()
     {
-
+        //equipt weapon
+        Destroy(weapon);
+        weapon = Instantiate(weapons[currentWeapon], new Vector3(weaponPos.position.x, weaponPos.position.y, weaponPos.position.z), Quaternion.identity);
+        weapon.transform.parent = gameObject.transform;
     }
 }
