@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 82872449795354098}
   - component: {fileID: 114269982831263582}
   m_Layer: 0
-  m_Name: mineProjectile
+  m_Name: mine
   m_TagString: explosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

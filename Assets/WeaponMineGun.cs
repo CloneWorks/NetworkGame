@@ -8,6 +8,9 @@ public class WeaponMineGun : MonoBehaviour {
 	public bool ready = true;
 	public float cooldown = 2.0f;
 
+	public float horizOffset = 1.0f;
+	public float vertOffset = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,10 +22,11 @@ public class WeaponMineGun : MonoBehaviour {
 	}
 
 	public void fire(GameObject player){
-		Debug.Log ("fire called");
-		Instantiate(projectile, player.transform);
 
-
+		Vector3 initialPos = player.transform.position + horizOffset * player.transform.forward;
+		initialPos.y += vertOffset;
+	
+		GameObject mine = Instantiate(projectile, initialPos, Quaternion.identity);
 	}
 
 }
