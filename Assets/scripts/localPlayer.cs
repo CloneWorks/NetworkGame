@@ -51,7 +51,7 @@ public class localPlayer : NetworkBehaviour {
 
         rend.material.SetColor("_OutlineColor", playerColour);
 
-        this.transform.position = new Vector3(Random.Range(-20,20), 0  , Random.Range(-20,20));
+        this.transform.position = new Vector3(Random.Range(-20,20), 10  , Random.Range(-20,20));
 	}
 	
 	// Update is called once per frame
