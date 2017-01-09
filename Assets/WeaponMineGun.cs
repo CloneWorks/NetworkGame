@@ -20,6 +20,9 @@ public class WeaponMineGun : MonoBehaviour {
 
 	public void fire(){
 		Debug.Log ("fire called");
+		Instantiate(projectile);
+
+
 	}
 
 }
