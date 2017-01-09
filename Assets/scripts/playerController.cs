@@ -109,6 +109,9 @@ public class playerController : MonoBehaviour {
 			if (currentWeapon == 1) {
 				gun.GetComponent<WeaponMineGun> ().fire (gameObject);
 			}
+			if (currentWeapon == 2) {
+				gun.GetComponent<WeaponBombGun> ().fire (gameObject);
+			}
 		}
 
 

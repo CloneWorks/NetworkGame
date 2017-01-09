@@ -1201,6 +1201,11 @@ MonoBehaviour:
   weapons:
   - {fileID: 1721914049379428, guid: 6df0264a9fec697458d1558e122e65cf, type: 2}
   - {fileID: 1462348395800550, guid: c671caf109a5e8c4c910c48da500906f, type: 2}
+  - {fileID: 1223841347045040, guid: b5fab61432294df4ba20769274d9e6b4, type: 2}
+  weaponPos: {fileID: 0}
+  weapon: {fileID: 0}
+  leftHandWeaponPos: {fileID: 0}
+  rightHandWeaponPos: {fileID: 0}
 --- !u!114 &11440794
 MonoBehaviour:
   m_ObjectHideFlags: 1
