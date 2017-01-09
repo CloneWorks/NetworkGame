@@ -18,9 +18,9 @@ public class WeaponMineGun : MonoBehaviour {
 		
 	}
 
-	public void fire(){
+	public void fire(GameObject player){
 		Debug.Log ("fire called");
-		Instantiate(projectile);
+		Instantiate(projectile, player.transform);
 
 
 	}

@@ -166,7 +166,7 @@ public class playerController : MonoBehaviour {
 		{
 			GameObject gun = (GameObject)weapons[0];
 			Debug.Log(gun);
-			gun.GetComponent<WeaponMineGun> ().fire ();
+			gun.GetComponent<WeaponMineGun> ().fire (gameObject);
 
 
 
