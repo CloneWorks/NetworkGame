@@ -553,7 +553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &402490
 Transform:
   m_ObjectHideFlags: 1
@@ -1174,6 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Player
+  playerColour: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &11419652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1195,6 +1196,9 @@ MonoBehaviour:
   angle: 45
   rigid: {fileID: 0}
   charC: {fileID: 0}
+  currentWeapon: 0
+  weapons:
+  - {fileID: 0}
 --- !u!114 &11440794
 MonoBehaviour:
   m_ObjectHideFlags: 1
