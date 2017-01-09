@@ -3099,6 +3099,10 @@ Prefab:
       propertyPath: weapons.Array.data[0]
       value: 
       objectReference: {fileID: 1947870142}
+    - target: {fileID: 196998, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
   m_IsPrefabParent: 0
