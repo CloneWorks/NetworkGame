@@ -3022,7 +3022,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 430042, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.2093048
+      value: 3.28
       objectReference: {fileID: 0}
     - target: {fileID: 430042, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3030,7 +3030,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430042, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 11.935455
+      value: -4.19
       objectReference: {fileID: 0}
     - target: {fileID: 430042, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3051,6 +3051,11 @@ Prefab:
     - target: {fileID: 430042, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774041815934084, guid: 2652dee8c4104d94797b844bc6872eca,
+        type: 2}
+      propertyPath: useFeetIK
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2652dee8c4104d94797b844bc6872eca, type: 2}
@@ -3141,6 +3146,10 @@ Prefab:
     - target: {fileID: 4845381839919328, guid: edf623e42cd8eb848946b51380a4b7f2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857208918331620, guid: edf623e42cd8eb848946b51380a4b7f2, type: 2}
+      propertyPath: m_TagString
+      value: wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edf623e42cd8eb848946b51380a4b7f2, type: 2}

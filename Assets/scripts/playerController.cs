@@ -101,6 +101,11 @@ public class playerController : MonoBehaviour {
             animator.SetBool("sharpTurn", false);
         }
 
+        if (animator.GetFloat("direction") == -5)
+        {
+            animator.SetBool("sharpTurn", false);
+        }
+
         //-------------------Before animator -----------------------------------------------------------------
 	    //if this is your player object
         //float translation = CrossPlatformInputManager.GetAxis("Vertical") * speed;
@@ -138,7 +143,6 @@ public class playerController : MonoBehaviour {
 
             if(animator.GetFloat("speed") > 0.5)
             {
-                Debug.Log(rigid.velocity.sqrMagnitude);
                 rigid.AddForce(((transform.forward * jumpForceForward) + (Vector3.up * jumpForceUp * 1.5f)), ForceMode.Impulse);
             }
             else

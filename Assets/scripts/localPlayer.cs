@@ -39,6 +39,8 @@ public class localPlayer : NetworkBehaviour {
             player = gameObject;
 
             //GetComponent<playerCamera>().enabled = true;
+
+            GetComponent<IK_WallClimb>().enabled = true;
         }
 
 
