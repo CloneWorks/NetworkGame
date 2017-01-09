@@ -72,110 +72,125 @@ public class playerController : MonoBehaviour {
         charC = GetComponent<CharacterController>();
 	}
 
-    void Update()
-    {
-        
-    }
+	void Update(){
 
-	// Update is called once per frame
-	void FixedUpdate () {
 
-        if (animator && IsGrounded())
-        {
-            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-            //pull values from keyboard/controller
-            h = CrossPlatformInputManager.GetAxis("Horizontal");
-            v = CrossPlatformInputManager.GetAxis("Vertical");
-
-            //speed = new Vector2(h, v).sqrMagnitude;
-
-            stickToWorldSpace(this.transform, Camera.main.transform, ref direction, ref speed);
-
-            animator.SetFloat("speed", speed);
-            animator.SetFloat("direction", direction, directionDampTime, Time.deltaTime); //animator.SetFloat("direction", h, directionDampTime, Time.deltaTime);
-
-        }
-
-        //turning sharply
-        if (animator.GetFloat("direction") > 2.75 || animator.GetFloat("direction") < -2.75)
-        {
-            animator.SetBool("sharpTurn", true);
-        }
-        else
-        {
-            animator.SetBool("sharpTurn", false);
-        }
-
-        if (animator.GetFloat("direction") == -5)
-        {
-            animator.SetBool("sharpTurn", false);
-        }
-
-        //-------------------Before animator -----------------------------------------------------------------
-	    //if this is your player object
-        //float translation = CrossPlatformInputManager.GetAxis("Vertical") * speed;
-        //float rotation = CrossPlatformInputManager.GetAxis("Horizontal") * rotationSpeed;
-
-        //translation *= Time.deltaTime;
-        //rotation *= Time.deltaTime;
-
-        //transform.Translate(0,0, translation);
-        //transform.Rotate(0, rotation, 0);
-
-        //moveCam();
-        //-------------------Before animator -----------------------------------------------------------------
-
-        if(IsGrounded() && isInLocomotion() && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0)))
-        {
-            Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (h < 0f ? -1f : 1f), 0f), Mathf.Abs(h));
-            Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
-            this.transform.rotation = (this.transform.rotation * deltaRotation);
-        }
-
-        //==================
-        //jumping
-        //==================
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && !animator.GetCurrentAnimatorStateInfo(0).IsName("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo(0).IsName("getting_up") && animator.GetBool("jumping") == false)
-        {
-            animator.SetBool("jumping", true);
-            animator.applyRootMotion = false;
-
-            //rigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-            //rigid.AddForce(new Vector3(0, 0, jumpForce), ForceMode.Impulse);
-
-            //Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
-            //rigid.AddForce(dir * jumpForce);
-
-            if(animator.GetFloat("speed") > 0.5)
-            {
-                rigid.AddForce(((transform.forward * jumpForceForward) + (Vector3.up * jumpForceUp * 1.5f)), ForceMode.Impulse);
-            }
-            else
-            {
-                rigid.AddForce((Vector3.up * (jumpForceUp)), ForceMode.Impulse);
-            }
-            
-        }
+		for (int i = 1; i < 5; i++) {
+			if (Input.GetKeyDown ("" + i)) {
+				currentWeapon = i - 1;
+				Debug.Log (currentWeapon);
+			}
+		}
 
 
 		//==================
 		//Shooting
 		//==================
-		if (Input.GetMouseButtonDown (0) && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up")) 
-		{
-			GameObject gun = (GameObject)weapons[0];
-			Debug.Log(gun);
-			gun.GetComponent<WeaponMineGun> ().fire (gameObject);
+		if (Input.GetMouseButtonDown (0) && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up")) {
+			GameObject gun = (GameObject)weapons [currentWeapon];
 
 
-
-
+			//should be done through polymorphism - way simpler code here and in weapons
+			if (currentWeapon == 0) {
+				gun.GetComponent<WeaponNailgun> ().fire (gameObject);
+			}
+			if (currentWeapon == 1) {
+				gun.GetComponent<WeaponMineGun> ().fire (gameObject);
+			}
 		}
 
 
-        
-    }
+	}
+
+	// Update is called once per frame
+	void FixedUpdate () {
+
+		if (animator && IsGrounded ()) {
+			stateInfo = animator.GetCurrentAnimatorStateInfo (0);
+
+			//pull values from keyboard/controller
+			h = CrossPlatformInputManager.GetAxis ("Horizontal");
+			v = CrossPlatformInputManager.GetAxis ("Vertical");
+
+			//speed = new Vector2(h, v).sqrMagnitude;
+
+			stickToWorldSpace (this.transform, Camera.main.transform, ref direction, ref speed);
+
+			animator.SetFloat ("speed", speed);
+			animator.SetFloat ("direction", direction, directionDampTime, Time.deltaTime); //animator.SetFloat("direction", h, directionDampTime, Time.deltaTime);
+
+		}
+
+		//turning sharply
+		if (animator.GetFloat ("direction") > 2.75 || animator.GetFloat ("direction") < -2.75) {
+			animator.SetBool ("sharpTurn", true);
+		} else {
+			animator.SetBool ("sharpTurn", false);
+		}
+
+		if (animator.GetFloat ("direction") == -5) {
+			animator.SetBool ("sharpTurn", false);
+		}
+
+		//-------------------Before animator -----------------------------------------------------------------
+		//if this is your player object
+		//float translation = CrossPlatformInputManager.GetAxis("Vertical") * speed;
+		//float rotation = CrossPlatformInputManager.GetAxis("Horizontal") * rotationSpeed;
+
+		//translation *= Time.deltaTime;
+		//rotation *= Time.deltaTime;
+
+		//transform.Translate(0,0, translation);
+		//transform.Rotate(0, rotation, 0);
+
+		//moveCam();
+		//-------------------Before animator -----------------------------------------------------------------
+
+		if (IsGrounded () && isInLocomotion () && ((direction >= 0 && h >= 0) || (direction < 0 && h < 0))) {
+			Vector3 rotationAmount = Vector3.Lerp (Vector3.zero, new Vector3 (0f, rotationDegreePerSecond * (h < 0f ? -1f : 1f), 0f), Mathf.Abs (h));
+			Quaternion deltaRotation = Quaternion.Euler (rotationAmount * Time.deltaTime);
+			this.transform.rotation = (this.transform.rotation * deltaRotation);
+		}
+
+		//==================
+		//jumping
+		//==================
+		if (Input.GetKeyDown (KeyCode.Space) && IsGrounded () && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up") && animator.GetBool ("jumping") == false) {
+			animator.SetBool ("jumping", true);
+			animator.applyRootMotion = false;
+
+			//rigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+			//rigid.AddForce(new Vector3(0, 0, jumpForce), ForceMode.Impulse);
+
+			//Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
+			//rigid.AddForce(dir * jumpForce);
+
+			if (animator.GetFloat ("speed") > 0.5) {
+				rigid.AddForce (((transform.forward * jumpForceForward) + (Vector3.up * jumpForceUp * 1.5f)), ForceMode.Impulse);
+			} else {
+				rigid.AddForce ((Vector3.up * (jumpForceUp)), ForceMode.Impulse);
+			}
+            
+		}
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
 
     void OnCollisionEnter(Collision collision)
     {

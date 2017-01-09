@@ -1198,7 +1198,8 @@ MonoBehaviour:
   charC: {fileID: 0}
   currentWeapon: 0
   weapons:
-  - {fileID: 1796595402759356, guid: c671caf109a5e8c4c910c48da500906f, type: 2}
+  - {fileID: 1721914049379428, guid: 6df0264a9fec697458d1558e122e65cf, type: 2}
+  - {fileID: 1462348395800550, guid: c671caf109a5e8c4c910c48da500906f, type: 2}
 --- !u!114 &11440794
 MonoBehaviour:
   m_ObjectHideFlags: 1
