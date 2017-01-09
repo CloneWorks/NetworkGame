@@ -164,8 +164,11 @@ public class playerController : MonoBehaviour {
 		//==================
 		if (Input.GetMouseButtonDown (0) && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up")) 
 		{
-			GameObject gun = (GameObject)weapons[1];
-			Debug.Log (gun);
+			GameObject gun = (GameObject)weapons[0];
+			Debug.Log(gun);
+			gun.GetComponent<WeaponMineGun> ().fire ();
+
+
 
 
 		}

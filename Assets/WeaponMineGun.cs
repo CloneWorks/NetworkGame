@@ -18,7 +18,7 @@ public class WeaponMineGun : MonoBehaviour {
 		
 	}
 
-	void fire(){
+	public void fire(){
 		Debug.Log ("fire called");
 	}
 
