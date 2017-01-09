@@ -98,7 +98,7 @@ public class playerController : MonoBehaviour {
 		//==================
 		//Shooting
 		//==================
-		if (Input.GetMouseButtonDown (0) && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up")) {
+		if (Input.GetMouseButtonDown (0) && !falling()) {
 			GameObject gun = (GameObject)weapons [currentWeapon];
 
 
@@ -169,7 +169,7 @@ public class playerController : MonoBehaviour {
 		//==================
 		//jumping
 		//==================
-		if (Input.GetKeyDown (KeyCode.Space) && IsGrounded () && !animator.GetCurrentAnimatorStateInfo (0).IsName ("falling_flat_impact") && !animator.GetCurrentAnimatorStateInfo (0).IsName ("getting_up") && animator.GetBool ("jumping") == false) {
+		if (Input.GetKeyDown (KeyCode.Space) && IsGrounded () && !falling() && animator.GetBool ("jumping") == false) {
 			animator.SetBool ("jumping", true);
 			animator.applyRootMotion = false;
 
@@ -188,7 +188,7 @@ public class playerController : MonoBehaviour {
 		}
 
         //don't hold weapon when falling
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("falling_flat_impact") || animator.GetCurrentAnimatorStateInfo(0).IsName("getting_up"))
+        if (falling())
         {
             useIK = false;
         }
@@ -322,6 +322,18 @@ public class playerController : MonoBehaviour {
             animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandWeaponPos.position);
             //anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
             //anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
+        }
+    }
+
+    bool falling()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("falling") || animator.GetCurrentAnimatorStateInfo(0).IsName("falling_flat_impact") || animator.GetCurrentAnimatorStateInfo(0).IsName("getting_up"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
