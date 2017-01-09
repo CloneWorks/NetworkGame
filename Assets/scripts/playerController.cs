@@ -266,4 +266,8 @@ public class playerController : MonoBehaviour {
         return stateInfo.nameHash == m_locomotionId;
     }
 
+    public void equiptWeapon()
+    {
+
+    }
 }
