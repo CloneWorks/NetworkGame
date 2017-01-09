@@ -195,8 +195,8 @@ public class playerController : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         //landing on the ground
-        if (collision.gameObject.name == "Terrain")
-        {
+        //if (collision.gameObject.name == "Terrain") //may want to add tags for buildings and walls to avoid infinite jumping.
+        //{
             //on the ground
             if (animator.GetBool("jumping") == true)
             {
@@ -210,7 +210,7 @@ public class playerController : MonoBehaviour {
                 animator.SetBool("explode", false);
                 animator.applyRootMotion = true;
             }
-        }
+        //}
 
         //hits a mine
         if(collision.gameObject.tag == "explosive"){
