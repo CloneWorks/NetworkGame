@@ -44,9 +44,8 @@ public class playerController : MonoBehaviour {
 
     public GameObject weapon;
 
-    public Transform leftHandWeaponPos;
-    public Transform rightHandWeaponPos;
-
+    public Transform leftHandWeaponPos = null;
+    public Transform rightHandWeaponPos = null;
 
 	// Use this for initialization
 	void Start () {
@@ -285,7 +284,36 @@ public class playerController : MonoBehaviour {
     {
         //equipt weapon
         Destroy(weapon);
-        weapon = Instantiate(weapons[currentWeapon], new Vector3(weaponPos.position.x, weaponPos.position.y, weaponPos.position.z), Quaternion.identity);
+        weapon = Instantiate(weapons[currentWeapon], new Vector3(weaponPos.position.x, weaponPos.position.y, weaponPos.position.z), weaponPos.rotation);
         weapon.transform.parent = gameObject.transform;
+
+        //get hand positions from weapon prefab
+        if(weapon.transform.childCount == 1)
+        {
+            leftHandWeaponPos = weapon.transform.GetChild(0).transform.FindChild("leftHand");
+            rightHandWeaponPos = weapon.transform.GetChild(0).transform.FindChild("rightHand");
+        }
+        else
+        {
+            leftHandWeaponPos = weapon.transform.FindChild("leftHand");
+            rightHandWeaponPos = weapon.transform.FindChild("rightHand");
+        }
+    }
+
+    void OnAnimatorIK()
+    {
+        //position hands
+        if (leftHandWeaponPos != null && rightHandWeaponPos != null)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandWeaponPos.position);
+            //anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
+            //anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandRot);
+
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandWeaponPos.position);
+            //anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+            //anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
+        }
     }
 }
