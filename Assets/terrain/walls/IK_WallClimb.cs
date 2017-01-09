@@ -118,6 +118,17 @@ public class IK_WallClimb : MonoBehaviour {
         {
             rightFoot = false;
         }
+
+
+        //don't hold walls when falling
+        if (falling())
+        {
+            useIK = false;
+        }
+        else
+        {
+            useIK = true;
+        }
     }
 
     void OnAnimatorIK(){
@@ -156,6 +167,18 @@ public class IK_WallClimb : MonoBehaviour {
                 }
             }
             
+        }
+    }
+
+    bool falling()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("falling") || anim.GetCurrentAnimatorStateInfo(0).IsName("falling_flat_impact") || anim.GetCurrentAnimatorStateInfo(0).IsName("getting_up"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

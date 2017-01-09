@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponNailgun : MonoBehaviour {
 
 	public GameObject projectile;
+
 	public bool ready = true;
 	public float cooldown = 2.0f;
 
@@ -12,6 +13,8 @@ public class WeaponNailgun : MonoBehaviour {
 	public float vertOffset = 0.0f;
 
 	public float force = 10000.0f;
+
+    public Transform weaponPos;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +28,9 @@ public class WeaponNailgun : MonoBehaviour {
 
 	public void fire(GameObject player){
 
-		Vector3 initialPos = player.transform.position + horizOffset * player.transform.forward;
+        weaponPos = player.transform.FindChild("weaponPos");
+
+		Vector3 initialPos = weaponPos.transform.position + horizOffset * player.transform.forward;
 		initialPos.y += vertOffset;
 
 		//Quaternion.Euler(90, 0, 0)

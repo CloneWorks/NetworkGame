@@ -228,6 +228,7 @@ MonoBehaviour:
   projectile: {fileID: 1641923430223922, guid: b8e98a8dd32a6184c869a832f0214474, type: 2}
   ready: 1
   cooldown: 2
-  horizOffset: 1
-  vertOffset: 1
+  horizOffset: 1.1
+  vertOffset: 0.15
   force: 1000
+  weaponPos: {fileID: 0}
