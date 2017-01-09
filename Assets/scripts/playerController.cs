@@ -44,6 +44,7 @@ public class playerController : MonoBehaviour {
 
     public GameObject weapon;
 
+    public bool useIK = true;
     public Transform leftHandWeaponPos = null;
     public Transform rightHandWeaponPos = null;
 
@@ -112,7 +113,6 @@ public class playerController : MonoBehaviour {
 				gun.GetComponent<WeaponBombGun> ().fire (gameObject);
 			}
 		}
-
 
 	}
 
@@ -187,7 +187,15 @@ public class playerController : MonoBehaviour {
             
 		}
 
-
+        //don't hold weapon when falling
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("falling_flat_impact") || animator.GetCurrentAnimatorStateInfo(0).IsName("getting_up"))
+        {
+            useIK = false;
+        }
+        else
+        {
+            useIK = true;
+        }
 
 
 
@@ -303,7 +311,7 @@ public class playerController : MonoBehaviour {
     void OnAnimatorIK()
     {
         //position hands
-        if (leftHandWeaponPos != null && rightHandWeaponPos != null)
+        if (leftHandWeaponPos != null && rightHandWeaponPos != null && useIK)
         {
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
             animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandWeaponPos.position);
