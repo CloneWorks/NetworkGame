@@ -87,7 +87,7 @@ public class playerController : MonoBehaviour {
 
 
 		for (int i = 1; i < 5; i++) {
-			if (Input.GetKeyDown ("" + i)) {
+			if (Input.GetKeyDown ("" + i) && !falling()) {
 				currentWeapon = i - 1;
                 equiptWeapon();
 				Debug.Log (currentWeapon);
@@ -190,11 +190,21 @@ public class playerController : MonoBehaviour {
         //don't hold weapon when falling
         if (falling())
         {
+            //take hands off weapon
             useIK = false;
+
+            //let weapon fall
+            weapon.GetComponent<Rigidbody>().isKinematic = false;
         }
         else
         {
+            //put hands back on weapon
             useIK = true;
+
+            //pick weapon up
+            weapon.GetComponent<Rigidbody>().isKinematic = true;
+            equiptWeapon();
+            
         }
 
 
