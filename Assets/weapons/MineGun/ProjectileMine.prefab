@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 82872449795354098}
   - component: {fileID: 114269982831263582}
   m_Layer: 0
-  m_Name: mine
+  m_Name: ProjectileMine
   m_TagString: explosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,6 +300,9 @@ MonoBehaviour:
   audio: {fileID: 0}
   rend: {fileID: 0}
   ps: {fileID: 0}
+  rigid: {fileID: 0}
+  destroyAfterTime: 0
+  destroyAfter: 3
 --- !u!135 &135926734744833490
 SphereCollider:
   m_ObjectHideFlags: 1

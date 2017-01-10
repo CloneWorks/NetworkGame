@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3110780b6ab73a94a841a6f4382fb7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1212562004059266, guid: c5a306a615f70a049af019a09f4bee04, type: 2}
+  projectile: {fileID: 1893446664657822, guid: 609b4aeefa3e54b4498a72acf2b2f7af, type: 2}
   ready: 1
   cooldown: 2
   horizOffset: 1
