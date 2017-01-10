@@ -222,7 +222,25 @@ public class playerController : MonoBehaviour {
 
 
 
+    void OnCollisionStay(Collision collision)
+    {
+        if(falling())
+        {
+            if (animator.GetBool("jumping") == true)
+            {
+                animator.SetBool("jumping", false);
+                animator.applyRootMotion = true;
+            }
 
+            //on ground after explosion
+            if (animator.GetBool("explode") == true)
+            {
+                animator.SetBool("explode", false);
+                animator.applyRootMotion = true;
+            }
+        }
+        
+    }
 
     void OnCollisionEnter(Collision collision)
     {
