@@ -236,14 +236,19 @@ public class playerController : MonoBehaviour {
 
         //hits a mine
         if(collision.gameObject.tag == "explosive"){
-            animator.SetBool("explode", true);
-            animator.applyRootMotion = false;
+            explode();
         }
     }
 
     bool IsGrounded()
     {
         return Physics.Raycast(this.transform.position, -Vector3.up, distToGround + 0.0f);
+    }
+
+    public void explode()
+    {
+        animator.SetBool("explode", true);
+        animator.applyRootMotion = false;
     }
 
     //public void moveCam()

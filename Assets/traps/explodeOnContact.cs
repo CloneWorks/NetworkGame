@@ -44,6 +44,12 @@ public class explodeOnContact : MonoBehaviour {
 
 			if (rb != null) {
 				rb.AddExplosionForce (power, explosionPos, radius, 3.0F);
+
+                if(rb.transform.tag == "Player")
+                {
+                    //Tell player they've been hit by an explosion
+                    rb.gameObject.GetComponent<playerController>().explode();
+                }
 			}
 		}
 
