@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4338627146040684}
   - component: {fileID: 114806252499417382}
   - component: {fileID: 54593423366378616}
-  - component: {fileID: 65017362614375614}
+  - component: {fileID: 135007803108910782}
   m_Layer: 0
   m_Name: NailGun
   m_TagString: Untagged
@@ -214,18 +214,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65017362614375614
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622286755755096}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95725267123613900
 Animator:
   serializedVersion: 3
@@ -261,3 +249,15 @@ MonoBehaviour:
   vertOffset: 0.15
   force: 1000
   weaponPos: {fileID: 0}
+--- !u!135 &135007803108910782
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622286755755096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
