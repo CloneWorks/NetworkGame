@@ -225,10 +225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911d5d538bba5384abffb887cbe5f7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1641923430223922, guid: b8e98a8dd32a6184c869a832f0214474, type: 2}
+  projectile: {fileID: 1999804141557350, guid: 184f4a469b9dedc499d419218a270658, type: 2}
   ready: 1
   cooldown: 2
-  horizOffset: 1.1
+  horizOffset: 0.7
   vertOffset: 0.15
   force: 1000
   weaponPos: {fileID: 0}
